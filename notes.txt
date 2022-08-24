@@ -1,0 +1,17 @@
+follow the instructions on https://fastapi.tiangolo.com/#installation
+
+pip install fastapi
+pip install "uvicorn[standard]"
+
+for data validation  -> pip install pydantic
+for postgres database -> pip install pyscopg2
+
+----------------------------------------------------------------------
+
+to run the server on terminal type "uvicorn main:app --reload"
+
+---------------------------------------------------------
+for documentation
+http://127.0.0.1:8000/docs
+--------------------------------------------------
+
