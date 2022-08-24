@@ -33,7 +33,7 @@ class DB:
         pass
 
     def getall(self):
-        self.cur.execute("SELECT * FROM flights")
+        self.cur.execute(f'SELECT * FROM {self.TABLE_NAME_FLIGHT}')
         flights = self.cur.fetchall()
         return flights
 
