@@ -1,5 +1,9 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
+import time
+
+
+
 
 
 class DB:
@@ -10,20 +14,30 @@ class DB:
 
 
     def connect(self):
-        try:
-            self.conn = psycopg2.connect(host='localhost', database= 'my fastapi', user='postgres', password='optimus1985', cursor_factory=RealDictCursor)
-            self.cur = self.conn.cursor()
-            print("database connected!")
-        except Exception as e:
-            print("cant connect: {e}")
-    
+        while True:
+            try:
+                self.conn = psycopg2.connect(host='localhost', 
+                                            database= 'my fastapi', 
+                                            user='postgres', 
+                                            password='optimus1985', 
+                                            cursor_factory=RealDictCursor)
+
+                self.cur = self.conn.cursor()
+                print("database connected!")
+                break
+            except Exception as e:
+                print("cant connect: {e}")
+                time.sleep(2)
 
     def create(self, item):
         pass
 
-    def get(self):
-        pass
+    def getall(self):
+        self.cur.execute("SELECT * FROM flights")
+        flights = self.cur.fetchall()
+        return flights
 
+        
     def update(self, item):
         pass
 
